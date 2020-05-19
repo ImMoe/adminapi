@@ -1,0 +1,23 @@
+﻿@model adminapi.Besökare
+
+@{
+    ViewBag.Title = "Besökare";
+}
+
+<h2>Besökare</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="card">
+            <div class="card-content">
+                @Html.EditorFor(m => m.username)
+                @Html.EditorFor(m => m.password)
+                @Html.EditorFor(m => m.role)
+
+                <button type="submit" class="btn blue darken-2">Uppdatera</button>
+                <a href="/" class="btn brown">Avbryt</a>
+            </div>
+        </div>
+    </div>
+}

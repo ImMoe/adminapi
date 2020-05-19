@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Hem";
+}
+
+
+<div class="row">
+    <div class="card">
+        <div class="card-content">
+            <form method="post" action="/">
+                <input type="text" placeholder="Användarnamn" name="user" />
+                <input type="password" placeholder="password" name="pass" />
+                <select name="roll">
+                    <option>Välj roll</option>
+                    <option value="Arrangör">Arrangör</option>
+                    <option value="Besökare">Besökare</option>
+                </select>
+                <button type="submit" class="btn brown">Skapa</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m6 l6">
+        <div class="card">
+            <div class="card-content">
+                <p class="card-title">Arrangörer</p>
+                <table class="highlight">
+                    <tr>
+                        <th>Id</th>
+                        <th>Användarnamn</th>
+                        <th>Roll</th>
+                        <th>Handling</th>
+                        <th>Handling</th>
+                    </tr>
+                    @foreach (var arrangör in ViewBag.arrangörer)
+                    {
+                        <tr>
+                            <td>@arrangör.Id</td>
+                            <td>@arrangör.username</td>
+                            <td>@arrangör.role</td>
+                            <td><a href="/home/rma/@arrangör.Id" class="btn red darken-2">Radera</a></td>
+                            <td><a href="/home/arrangör/@arrangör.Id" class="btn brown">Redigera</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m6 l6">
+        <div class="card">
+            <div class="card-content">
+                <p class="card-title">Besökare</p>
+                <table class="highlight">
+                    <tr>
+                        <th>Id</th>
+                        <th>Användarnamn</th>
+                        <th>Roll</th>
+                        <th>Handling</th>
+                        <th>Handling</th>
+                    </tr>
+                    @foreach (var besök in ViewBag.besökare)
+                    {
+                        <tr>
+                            <td>@besök.Id</td>
+                            <td>@besök.username</td>
+                            <td>@besök.role</td>
+                            <td><a href="/home/rmb/@besök.Id" class="btn red darken-2">Radera</a></td>
+                            <td><a href="/home/besökare/@besök.Id" class="btn brown">Redigera</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
