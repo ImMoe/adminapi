@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Lägg till ny admin";
+}
+
+<div class="card">
+    <div class="card-content">
+        <form action="/home/InsertAdmin" method="post">
+            <input name="user" placeholder="Användarnamn" />
+            <input name="pass" placeholder="Lösenord" />
+            <select name="perm">
+                <option>Välj behörighet</option>
+                <option value="eventadmin">Event Admin</option>
+                <option value="bookingadmin">Bokning Admin</option>
+                <option value="organizeradmin">Arrangör Admin</option>
+            </select>
+            <button type="submit" class="btn brown">Lägg till</button>
+        </form>
+    </div>
+</div>
+
