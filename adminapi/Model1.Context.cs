@@ -13,10 +13,10 @@ namespace adminapi
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabasEntities : DbContext
+    public partial class DatabaseEntities1 : DbContext
     {
-        public DatabasEntities()
-            : base("name=DatabasEntities")
+        public DatabaseEntities1()
+            : base("name=DatabaseEntities1")
         {
         }
     
@@ -28,5 +28,6 @@ namespace adminapi
         public virtual DbSet<Admins> Admins { get; set; }
         public virtual DbSet<Arrangörer> Arrangörer { get; set; }
         public virtual DbSet<Besökare> Besökare { get; set; }
+        public virtual DbSet<Admins_Login> Admins_Login { get; set; }
     }
 }

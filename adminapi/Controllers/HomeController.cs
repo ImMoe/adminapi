@@ -8,7 +8,7 @@ namespace adminapi.Controllers
 {
     public class HomeController : Controller
     {
-        DatabasEntities databas = new DatabasEntities();
+        DatabaseEntities1 databas = new DatabaseEntities1();
 
         public ActionResult Index()
         {
@@ -22,16 +22,18 @@ namespace adminapi.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(string user, string pass, string roll)
+        public ActionResult Index(string first, string last, string email, string password, string roll)
         {
             switch (roll)
             {
                 case "Arrangör":
                     var nyArrangör = new Arrangörer
                     {
-                        username = user,
-                        password = pass,
-                        role = roll
+                        Firstname = first,
+                        Lastname = last,
+                        Email = email,
+                        Password = password,
+                        Role = roll
                     };
                     databas.Arrangörer.Add(nyArrangör);
                     databas.SaveChanges();
@@ -39,9 +41,11 @@ namespace adminapi.Controllers
                 case "Besökare":
                     var nybesökare = new Besökare
                     {
-                        username = user,
-                        password = pass,
-                        role = roll
+                        Firstname = first,
+                        Lastname = last,
+                        Email = email,
+                        Password = password,
+                        Role = roll
                     };
                     databas.Besökare.Add(nybesökare);
                     databas.SaveChanges();
@@ -95,6 +99,25 @@ namespace adminapi.Controllers
             return RedirectToAction("index");
         }
 
+        public ActionResult InsertAdmin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult InsertAdmin(string user, string pass, string perm)
+        {
+            Admins_Login nyAdmin = new Admins_Login
+            {
+                username = user,
+                password = pass,
+                permission = perm
+            };
+            databas.Admins_Login.Add(nyAdmin);
+            databas.SaveChanges();
+            return RedirectToAction("InsertAdmin");
+        }
+
         public ActionResult Login()
         {
             return View();
@@ -111,7 +134,7 @@ namespace adminapi.Controllers
                     Session["is_logged_in"] = true;
                     return RedirectToAction("index");
                 }
-            } catch (NullReferenceException e)
+            } catch (NullReferenceException)
             {
                 return Content("Incorrect details. Please try again");
             }

@@ -15,8 +15,10 @@ namespace adminapi
     public partial class Arrangörer
     {
         public int Id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
-        public string role { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
     }
 }
